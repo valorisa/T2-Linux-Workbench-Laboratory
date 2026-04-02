@@ -1,0 +1,37 @@
+# T2 Linux Workbench Laboratory - Git Ignore
+# ==============================================================================
+
+# État des scripts (idempotence)
+.t2_state/
+
+# Fichiers de compilation
+*.o
+*.a
+*.so
+*.ko
+bin/
+obj/
+build/
+dist/
+
+# Éditeurs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Secrets
+*.pem
+*.key
+.env
