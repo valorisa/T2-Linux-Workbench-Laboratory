@@ -100,6 +100,52 @@ sudo bash scripts/manager.sh --force
 
 ---
 
+## 🐳 Usage Docker (Optionnel)
+
+Pour isoler l'environnement de build ou éviter de polluer ton hôte, utilise Docker.
+
+### 🚀 Démarrage Rapide
+
+```bash
+# Construire l'image
+docker-compose build
+
+# Démarrer le conteneur
+docker-compose up -d
+
+# Entrer dans le conteneur
+docker-compose exec t2-sde bash
+
+# Une fois dans le conteneur :
+sudo bash scripts/manager.sh
+bash scripts/build_sde.sh
+```
+
+### 📦 Récupérer les Artefacts
+
+Les binaires compilés sont accessibles dans le volume monté :
+
+```bash
+# Sur l'hôte
+ls ./output/
+```
+
+### 🛑 Arrêt
+
+```bash
+docker-compose down
+# Les volumes sont conservés pour reprendre plus tard
+```
+
+### ⚙️ Variables d'Environnement Docker
+
+| Variable | Défaut | Description |
+|----------|--------|-------------|
+| `TARGET_ARCH` | `x86_64` | Architecture cible |
+| `T2_SDE_VERSION` | `2025.03` | Version du SDE |
+
+---
+
 ## 🛠️ Dépannage
 
 | Problème | Solution |
@@ -107,6 +153,7 @@ sudo bash scripts/manager.sh --force
 | Échec `apt-get` | `sudo apt-get update && sudo apt-get dist-upgrade` |
 | Git clone échoue | Vérifier `git config --global http.sslVerify false` (proxy) |
 | Build échoue | Nettoyer : `rm -rf .t2_state && bash scripts/build_sde.sh` |
+| Docker build échoue | Vérifier Docker Desktop + WSL2 backend activé |
 
 ---
 
