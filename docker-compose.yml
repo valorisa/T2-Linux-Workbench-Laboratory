@@ -1,0 +1,35 @@
+# ==============================================================================
+# Fichier   : docker-compose.yml
+# Rôle      : Orchestration simplifiée du conteneur T2 SDE
+# Version   : 1.0.0
+# ==============================================================================
+version: '3.8'
+
+services:
+  t2-sde:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: t2-linux-workbench
+    hostname: t2-build
+    stdin_open: true
+    tty: true
+    volumes:
+      # Persiste les artefacts de build
+      - t2-sde-data:/t2-workbench/t2-sde
+      # Persiste l'état d'idempotence
+      - t2-state-data:/t2-workbench/.t2_state
+      # Monte le dossier local pour récupération des binaires
+      - ./output:/t2-workbench/output
+    environment:
+      - TARGET_ARCH=x86_64
+      - T2_SDE_VERSION=2025.03
+    working_dir: /t2-workbench
+    # Garde le conteneur actif même sans commande
+    entrypoint: ["/bin/bash", "-c", "while true; do sleep 3600; done"]
+
+volumes:
+  t2-sde-data:
+    name: t2-linux-sde-artifacts
+  t2-state-data:
+    name: t2-linux-state-cache
