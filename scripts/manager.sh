@@ -10,7 +10,7 @@ set -euo pipefail
 
 # --- Configuration Globale ---
 readonly T2_SDE_VERSION="2025.03"
-readonly T2_REPO_URL="https://git.t2linux.org/t2/trunk.git"
+readonly T2_REPO_URL="https://github.com/arete/t2.git"
 readonly STATE_DIR="./.t2_state"
 readonly TARGET_ARCH="${TARGET_ARCH:-x86_64}"
 
