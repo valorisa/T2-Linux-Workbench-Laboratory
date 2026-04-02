@@ -1,0 +1,61 @@
+# ==============================================================================
+# Fichier   : .dockerignore
+# Rôle      : Exclure les fichiers inutiles du contexte de build Docker
+# Projet    : T2-Linux-Workbench-Laboratory
+# ==============================================================================
+
+# --- Git & Versioning ---
+.git/
+.gitignore
+.github/
+
+# --- État du Projet (Idempotence) ---
+.t2_state/
+
+# --- Sorties & Artefacts Locaux ---
+output/
+bin/
+build/
+dist/
+*.log
+
+# --- Éditeurs & IDE ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-workspace
+*.code-workspace
+
+# --- Système d'Exploitation ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Docker (éviter la récursivité) ---
+Dockerfile
+docker-compose.yml
+.docker/
+
+# --- Documentation (sauf si nécessaire dans l'image) ---
+docs/
+*.md
+!README.md
+
+# --- Scripts PowerShell / Windows ---
+*.ps1
+*.psd1
+*.psm1
+
+# --- Secrets & Environnement ---
+.env
+*.pem
+*.key
+*.crt
+secrets/
+
+# --- Tests & CI (non requis dans l'image finale) ---
+tests/
+.ci/
+.github/
