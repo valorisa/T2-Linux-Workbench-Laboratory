@@ -1,5 +1,6 @@
+# ===========================================
 # T2 Linux Workbench Laboratory - Git Ignore
-# ==============================================================================
+# ===========================================
 
 # État des scripts (idempotence)
 .t2_state/
@@ -35,5 +36,6 @@ logs/
 *.pem
 *.key
 .env
+
 # T2 SDE source code (cloné, pas commité)
 t2-sde/
