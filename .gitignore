@@ -35,3 +35,5 @@ logs/
 *.pem
 *.key
 .env
+# T2 SDE source code (cloné, pas commité)
+t2-sde/
